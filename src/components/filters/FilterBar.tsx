@@ -76,8 +76,7 @@ const FilterBar: React.FC = () => {
     filters.regions.length +
     filters.warehouses.length +
     (filters.dateRange.start ? 1 : 0) +
-    (filters.dateRange.end   ? 1 : 0) +
-    (filters.searchQuery     ? 1 : 0);
+    (filters.dateRange.end   ? 1 : 0);
 
   return (
     <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
@@ -152,8 +151,8 @@ const FilterBar: React.FC = () => {
       {expanded && (
         <div className="px-4 pb-4 border-t border-slate-100 pt-4 space-y-4">
 
-          {/* Row 1: Date + Search */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {/* Row 1: Date */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-slate-500 text-xs font-semibold uppercase tracking-wide mb-1.5">From Date</label>
               <input
@@ -170,16 +169,6 @@ const FilterBar: React.FC = () => {
                 value={filters.dateRange.end}
                 onChange={e => setFilters({ dateRange: { ...filters.dateRange, end: e.target.value } })}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-700 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-400"
-              />
-            </div>
-            <div>
-              <label className="block text-slate-500 text-xs font-semibold uppercase tracking-wide mb-1.5">Search</label>
-              <input
-                type="text"
-                placeholder="Order ID, product, region…"
-                value={filters.searchQuery}
-                onChange={e => setFilters({ searchQuery: e.target.value })}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-700 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-indigo-400"
               />
             </div>
           </div>
