@@ -99,10 +99,13 @@ const applyFilters = (rows: DataRow[], f: FilterState): DataRow[] => {
   if (f.products.length > 0)
     result = result.filter(r => f.products.includes(r.product ?? ''));
 
-  if (f.statuses.length > 0)
+  if (f.statuses.length > 0) {
+    const activeStatuses = f.statuses.map(s => s.toLowerCase());
     result = result.filter(r =>
-      f.statuses.includes(r.deliveryStatus ?? '') || f.statuses.includes(r.status)
+      activeStatuses.includes((r.deliveryStatus ?? '').toLowerCase()) || 
+      activeStatuses.includes((r.status ?? '').toLowerCase())
     );
+  }
 
   if (f.regions.length > 0)
     result = result.filter(r => f.regions.includes(r.region ?? ''));

@@ -117,7 +117,7 @@ const parseLogisticsSheet = (values: string[][]): LogisticsRow[] => {
   const dateIdx      = col('order date')             !== -1 ? col('order date')             : col('date');
   const productIdx   = col('product name')           !== -1 ? col('product name')           : col('product');
   const regionIdx    = col('region');
-  const statusIdx    = col('delivery status');
+  const statusIdx    = col('delivery status')        !== -1 ? col('delivery status')        : (col('status') !== -1 ? col('status') : col('order status'));
   const warehouseIdx = col('warehouse');
   const timeIdx      = col('delivery time (days)')   !== -1 ? col('delivery time (days)')   : col('delivery time');
   const costIdx      = col('shipping cost (₹)')      !== -1 ? col('shipping cost (₹)')      : col('shipping cost');
@@ -194,6 +194,7 @@ const joinSheets = (salesRows: SalesRow[], logisticsRows: LogisticsRow[]): DataR
       const status: DataRow['status'] = deliveryStatus
         ? (STATUS_MAP[deliveryStatus] ?? 'active')
         : 'active';
+      
       joined.push({
         id:             l.orderId || `LOG-${i + 1}`,
         date:           '', // no date from logistics-only row
