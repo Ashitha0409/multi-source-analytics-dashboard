@@ -9,12 +9,12 @@ import type { DataRow, GoogleSheetConfig } from '../types';
 
 export const DEFAULT_SHEET_CONFIGS: GoogleSheetConfig[] = [
   {
-    id: import.meta.env.VITE_SHEET_ID_SALES || '10l2WDcZDqRhvwYyoTwggVHMsOlCMzCgqUc8FUo3NhG0',
+    id: import.meta.env.VITE_SHEET_ID_SALES || '',
     range: 'sales',
     name: 'Sales Data',
   },
   {
-    id: import.meta.env.VITE_SHEET_ID_SALES || '10l2WDcZDqRhvwYyoTwggVHMsOlCMzCgqUc8FUo3NhG0',
+    id: import.meta.env.VITE_SHEET_ID_SALES || '',
     range: 'user',
     name: 'Logistics',
   },
