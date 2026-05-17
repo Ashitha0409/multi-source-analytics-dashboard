@@ -28,9 +28,6 @@ const splitPeriods = (rows: DataRow[], days = 90) => {
 const sum = (rows: DataRow[], field: keyof DataRow): number =>
   rows.reduce((acc, r) => acc + ((r[field] as number) || 0), 0);
 
-const avg = (rows: DataRow[], field: keyof DataRow): number =>
-  rows.length === 0 ? 0 : sum(rows, field) / rows.length;
-
 const growthPct = (curr: number, prev: number): number =>
   prev === 0 ? (curr > 0 ? 100 : 0) : Math.round(((curr - prev) / prev) * 1000) / 10;
 
@@ -74,7 +71,6 @@ export const computeKPIs = (rows: DataRow[]): KPIData => {
   // Legacy compat
   const ordersCount    = totalOrders;
   const activeUsers    = sum(current, 'users');
-  const prevUsers      = sum(previous, 'users');
   const conversionRate = 0;
 
   return {

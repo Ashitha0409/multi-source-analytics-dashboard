@@ -11,7 +11,6 @@ const PRODUCTS   = ['Laptop', 'Printer', 'Mouse', 'Tablet', 'Keyboard', 'Monitor
 const REGIONS    = ['North', 'South', 'East', 'West', 'Central'];
 const WAREHOUSES = ['Delhi', 'Mumbai', 'Bangalore', 'Hyderabad', 'Chennai'];
 const DELIVERY_STATUSES: DataRow['deliveryStatus'][] = ['Delivered', 'In Transit', 'Delayed'];
-const STATUSES: DataRow['status'][] = ['completed', 'pending', 'cancelled'];
 
 const seededRng = (seed: number) => {
   let s = seed;
@@ -121,7 +120,6 @@ export const aggregateByRegion = (rows: DataRow[]) => {
 
   // Use dataset's own latest date as reference — not today
   const latestMs = Math.max(...valid.map(r => new Date(r.date).getTime()));
-  const latest   = new Date(latestMs);
 
   // Split dataset in half: second half = "current", first half = "previous"
   const earliestMs = Math.min(...valid.map(r => new Date(r.date).getTime()));

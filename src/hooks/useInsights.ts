@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useAnalytics } from './useAnalytics';
-import { formatCurrency, formatNumber } from '../utils';
+import { formatCurrency } from '../utils';
 
 export interface Insight {
   id: string;
